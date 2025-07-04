@@ -1,0 +1,12 @@
+assessment/
+assessment2/
+videos/
+*.mp4
+*.png
+*.jpg
+*.jpeg
+*.mov
+*.zip
+*.exe
+*.dmg
+*.DS_Store

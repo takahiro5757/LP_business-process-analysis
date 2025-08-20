@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:festal.co.jp)",
+      "Bash(mkdir:*)",
+      "Bash(python3:*)",
+      "Bash(npx serve:*)",
+      "Bash(rg:*)",
+      "Bash(sed:*)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)"
+    ],
+    "deny": []
+  }
+}

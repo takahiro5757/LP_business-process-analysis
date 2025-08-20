@@ -30,6 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Count up animations
     initCountUpAnimations();
+    
+    // FAQ accordion
+    initFAQAccordion();
 });
 
 // Smooth scrolling for anchor links
@@ -835,6 +838,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// FAQ Accordion functionality
+function initFAQAccordion() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', function() {
+            const isActive = item.classList.contains('active');
+            
+            // Close all other FAQ items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            if (isActive) {
+                item.classList.remove('active');
+            } else {
+                item.classList.add('active');
+            }
+        });
+    });
+}
+
 // Expose useful functions globally
 window.DXDiagnosisLP = {
     trackEvent,
@@ -842,5 +872,6 @@ window.DXDiagnosisLP = {
     validatePhone,
     initEnhancedScrollEffects,
     initDataParticles,
-    initParallaxEffects
+    initParallaxEffects,
+    initFAQAccordion
 };

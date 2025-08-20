@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拡張バリエーション | DX業務診断サービス</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.03) 0%, transparent 50%),
+                #0f172a;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .demo-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes titleShimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .demo-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 4rem 0 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .demo-section {
+            margin-bottom: 3rem;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .demo-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .demo-header {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: headerShimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes headerShimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: -100%; }
+        }
+
+        .sample-section {
+            padding: 3rem 2rem;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sample-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .sample-title {
+            font-size: 1.9rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+        }
+
+        .sample-text {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 1.8rem;
+            line-height: 1.7;
+        }
+
+        .sample-button {
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sample-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .sample-button:hover::before {
+            left: 100%;
+        }
+
+        .sample-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        }
+
+        /* 新しい提案1バリエーション */
+
+        /* 1F: フロストガラス・モーフィング */
+        .variation-1f .sample-section {
+            background: 
+                radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.04) 0%, transparent 40%),
+                linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.85) 100%);
+            backdrop-filter: blur(30px) saturate(180%);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            position: relative;
+        }
+
+        .variation-1f .sample-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(45deg,
+                    transparent 0px,
+                    rgba(255, 255, 255, 0.02) 1px,
+                    transparent 2px,
+                    transparent 10px
+                ),
+                repeating-linear-gradient(-45deg,
+                    transparent 0px,
+                    rgba(255, 255, 255, 0.01) 1px,
+                    transparent 2px,
+                    transparent 12px
+                );
+            animation: frostShift 8s ease-in-out infinite;
+        }
+
+        @keyframes frostShift {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.02); }
+        }
+
+        /* 1G: リキッドメタル */
+        .variation-1g .sample-section {
+            background: 
+                radial-gradient(ellipse at 30% 30%, rgba(148, 163, 184, 0.1) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 70%, rgba(71, 85, 105, 0.08) 0%, transparent 60%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(241, 245, 249, 0.85) 100%);
+            backdrop-filter: blur(20px) contrast(120%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .variation-1g .sample-section::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                conic-gradient(from 0deg at 50% 50%,
+                    rgba(148, 163, 184, 0.1) 0deg,
+                    rgba(71, 85, 105, 0.05) 90deg,
+                    rgba(148, 163, 184, 0.08) 180deg,
+                    rgba(71, 85, 105, 0.03) 270deg,
+                    rgba(148, 163, 184, 0.1) 360deg
+                );
+            animation: liquidFlow 12s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes liquidFlow {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1.1); }
+        }
+
+        /* 1H: ダイヤモンド・カット */
+        .variation-1h .sample-section {
+            background: 
+                linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, transparent 30%),
+                linear-gradient(45deg, rgba(139, 92, 246, 0.06) 0%, transparent 30%),
+                linear-gradient(225deg, rgba(236, 72, 153, 0.04) 0%, transparent 30%),
+                linear-gradient(315deg, rgba(34, 197, 94, 0.05) 0%, transparent 30%),
+                rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(25px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+            clip-path: polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%);
+        }
+
+        .variation-1h .sample-section::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            right: 10%;
+            bottom: 10%;
+            background: 
+                linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.3) 0%,
+                    transparent 50%,
+                    rgba(255, 255, 255, 0.2) 100%
+                );
+            animation: diamondSparkle 4s ease-in-out infinite;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+        }
+
+        @keyframes diamondSparkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* 1I: オパール・イリデセンス */
+        .variation-1i .sample-section {
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(239, 68, 68, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 75% 25%, rgba(251, 191, 36, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 25% 75%, rgba(34, 197, 94, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.07) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%);
+            backdrop-filter: blur(20px) hue-rotate(15deg);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            animation: opalShimmer 6s ease-in-out infinite;
+        }
+
+        @keyframes opalShimmer {
+            0%, 100% { filter: hue-rotate(0deg) saturate(100%); }
+            25% { filter: hue-rotate(15deg) saturate(120%); }
+            50% { filter: hue-rotate(30deg) saturate(140%); }
+            75% { filter: hue-rotate(15deg) saturate(120%); }
+        }
+
+        /* 1J: ミラー・ディストーション */
+        .variation-1j .sample-section {
+            background: 
+                linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%),
+                radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+                rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .variation-1j .sample-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.1) 25%,
+                    rgba(255, 255, 255, 0.2) 50%,
+                    rgba(255, 255, 255, 0.1) 75%,
+                    transparent 100%
+                );
+            animation: mirrorWave 5s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        @keyframes mirrorWave {
+            0%, 100% { transform: translateX(-100%) skewX(0deg); }
+            50% { transform: translateX(100%) skewX(15deg); }
+        }
+
+        /* 新しい提案5バリエーション */
+
+        /* 5F: テセラクト・キューブ */
+        .variation-5f .sample-section {
+            background: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%),
+                repeating-linear-gradient(45deg,
+                    rgba(59, 130, 246, 0.02) 0px,
+                    rgba(59, 130, 246, 0.02) 2px,
+                    transparent 2px,
+                    transparent 20px
+                );
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease;
+        }
+
+        .variation-5f .sample-section:hover {
+            transform: perspective(1000px) rotateX(15deg) rotateY(15deg) rotateZ(5deg);
+        }
+
+        .variation-5f .sample-section::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            right: 20%;
+            bottom: 20%;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            animation: tesseractPulse 4s ease-in-out infinite;
+        }
+
+        .variation-5f .sample-section::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            right: 10%;
+            bottom: 10%;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            animation: tesseractPulse 4s ease-in-out infinite 2s;
+        }
+
+        @keyframes tesseractPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+            50% { transform: scale(1.1) rotate(45deg); opacity: 0.7; }
+        }
+
+        /* 5G: プラズマ・フィールド */
+        .variation-5g .sample-section {
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 10%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
+                rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+        .variation-5g .sample-section:hover {
+            transform: perspective(800px) rotateY(12deg) rotateX(8deg);
+        }
+
+        .variation-5g .sample-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-radial-gradient(circle at 30% 30%,
+                    rgba(236, 72, 153, 0.1) 0px,
+                    transparent 5px,
+                    rgba(59, 130, 246, 0.05) 10px,
+                    transparent 15px
+                );
+            animation: plasmaFlow 10s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes plasmaFlow {
+            0% { transform: rotate(0deg) scale(1); opacity: 0.5; }
+            50% { transform: rotate(180deg) scale(1.2); opacity: 0.8; }
+            100% { transform: rotate(360deg) scale(1); opacity: 0.5; }
+        }
+
+        /* 5H: ワームホール・エフェクト */
+        .variation-5h .sample-section {
+            background: 
+                radial-gradient(ellipse at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+                conic-gradient(from 0deg at 50% 50%,
+                    rgba(59, 130, 246, 0.08) 0deg,
+                    rgba(139, 92, 246, 0.06) 60deg,
+                    rgba(236, 72, 153, 0.04) 120deg,
+                    rgba(251, 191, 36, 0.05) 180deg,
+                    rgba(34, 197, 94, 0.03) 240deg,
+                    rgba(239, 68, 68, 0.06) 300deg,
+                    rgba(59, 130, 246, 0.08) 360deg
+                );
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.7s ease;
+            overflow: hidden;
+        }
+
+        .variation-5h .sample-section:hover {
+            transform: perspective(1000px) rotateX(10deg) rotateY(10deg) scale(1.03);
+        }
+
+        .variation-5h .sample-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: 
+                repeating-conic-gradient(from 0deg at 50% 50%,
+                    transparent 0deg,
+                    rgba(255, 255, 255, 0.02) 2deg,
+                    transparent 4deg,
+                    transparent 8deg
+                );
+            animation: wormholeRotate 20s linear infinite;
+            transform-origin: center;
+            pointer-events: none;
+        }
+
+        @keyframes wormholeRotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+            50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.5); }
+            100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+        }
+
+        /* 5I: エネルギー・マトリックス */
+        .variation-5i .sample-section {
+            background: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+        .variation-5i .sample-section:hover {
+            transform: perspective(1000px) rotateX(8deg) rotateY(8deg);
+        }
+
+        .variation-5i .sample-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(0deg,
+                    rgba(59, 130, 246, 0.05) 0px,
+                    rgba(59, 130, 246, 0.05) 1px,
+                    transparent 1px,
+                    transparent 25px
+                ),
+                repeating-linear-gradient(90deg,
+                    rgba(139, 92, 246, 0.03) 0px,
+                    rgba(139, 92, 246, 0.03) 1px,
+                    transparent 1px,
+                    transparent 25px
+                );
+            animation: matrixFlow 8s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes matrixFlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(25px, 25px); }
+        }
+
+        /* 5J: フラクタル・ジオメトリ */
+        .variation-5j .sample-section {
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease;
+        }
+
+        .variation-5j .sample-section:hover {
+            transform: perspective(1000px) rotateX(12deg) rotateY(12deg) scale(1.02);
+        }
+
+        .variation-5j .sample-section::before {
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            right: 25%;
+            bottom: 25%;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transform: rotate(45deg);
+            animation: fractalSpin 6s linear infinite;
+        }
+
+        .variation-5j .sample-section::after {
+            content: '';
+            position: absolute;
+            top: 12.5%;
+            left: 12.5%;
+            right: 12.5%;
+            bottom: 12.5%;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            transform: rotate(-30deg);
+            animation: fractalSpin 8s linear infinite reverse;
+        }
+
+        @keyframes fractalSpin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">拡張バリエーション展開</h1>
+        <p class="demo-subtitle">より幅広い高級感表現のバリエーション</p>
+
+        <h2 class="category-title">提案1 追加バリエーション：メッシュグラデーション + グラスモーフィズム</h2>
+
+        <!-- 1F: フロストガラス・モーフィング -->
+        <div class="demo-section variation-1f">
+            <div class="demo-header">1F: フロストガラス・モーフィング</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">フロストガラス・エフェクト</h2>
+                    <p class="sample-text">高級車のフロストガラスのような質感。微細なテクスチャパターンが変化し、上品な曇りガラス効果を演出。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1G: リキッドメタル -->
+        <div class="demo-section variation-1g">
+            <div class="demo-header">1G: リキッドメタル・フロー</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">リキッドメタル・エフェクト</h2>
+                    <p class="sample-text">液体金属のような流動的な質感。シルバーグラデーションが円形に回転し、近未来的な金属感を表現。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1H: ダイヤモンド・カット -->
+        <div class="demo-section variation-1h">
+            <div class="demo-header">1H: ダイヤモンド・カット</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">ダイヤモンド・カット・エフェクト</h2>
+                    <p class="sample-text">ダイヤモンドのファセットカットを模倣。多角形の形状と内部の光の反射が宝石のような輝きを創出。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1I: オパール・イリデセンス -->
+        <div class="demo-section variation-1i">
+            <div class="demo-header">1I: オパール・イリデセンス</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">オパール・イリデセンス・エフェクト</h2>
+                    <p class="sample-text">オパールの虹色効果を再現。色相が時間とともに変化し、天然石の神秘的な美しさを表現。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1J: ミラー・ディストーション -->
+        <div class="demo-section variation-1j">
+            <div class="demo-header">1J: ミラー・ディストーション</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">ミラー・ディストーション・エフェクト</h2>
+                    <p class="sample-text">歪んだ鏡面のような反射効果。光の波が表面を通過し、液体ミラーのような動的な反射を演出。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="category-title">提案5 追加バリエーション：3D変形 + ホログラム効果</h2>
+
+        <!-- 5F: テセラクト・キューブ -->
+        <div class="demo-section variation-5f">
+            <div class="demo-header">5F: テセラクト・キューブ</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">テセラクト・キューブ・エフェクト</h2>
+                    <p class="sample-text">4次元立方体（テセラクト）をイメージした多重キューブ効果。複数の枠が脈動し、次元を超えた空間感を表現。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5G: プラズマ・フィールド -->
+        <div class="demo-section variation-5g">
+            <div class="demo-header">5G: プラズマ・フィールド</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">プラズマ・フィールド・エフェクト</h2>
+                    <p class="sample-text">プラズマ状態の物質をイメージした同心円パターン。回転する電磁場のような効果で科学的な先進性を表現。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5H: ワームホール・エフェクト -->
+        <div class="demo-section variation-5h">
+            <div class="demo-header">5H: ワームホール・エフェクト</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">ワームホール・エフェクト</h2>
+                    <p class="sample-text">宇宙のワームホールを模倣した渦巻き効果。中心から外側に向かう同心円が回転し、時空の歪みを視覚化。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5I: エネルギー・マトリックス -->
+        <div class="demo-section variation-5i">
+            <div class="demo-header">5I: エネルギー・マトリックス</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">エネルギー・マトリックス・エフェクト</h2>
+                    <p class="sample-text">エネルギーグリッドのような格子パターン。縦横のラインが流れ、デジタル空間のマトリックスを表現。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5J: フラクタル・ジオメトリ -->
+        <div class="demo-section variation-5j">
+            <div class="demo-header">5J: フラクタル・ジオメトリ</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">フラクタル・ジオメトリ・エフェクト</h2>
+                    <p class="sample-text">フラクタル幾何学の自己相似性を表現。複数の図形が異なる速度で回転し、数学的な美しさを視覚化。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

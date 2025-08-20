@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景デザイン提案デモ | DX業務診断サービス</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .demo-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .demo-section {
+            margin-bottom: 5rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-header {
+            background: #1e293b;
+            color: white;
+            padding: 1.5rem 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .sample-section {
+            padding: 3rem 2rem;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .sample-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .sample-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .sample-text {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+
+        .sample-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .sample-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        /* 提案1：グラデーション統一型 */
+        .proposal-1 .sample-section:nth-child(1) {
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .proposal-1 .sample-section:nth-child(2) {
+            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+
+        .proposal-1 .sample-section:nth-child(3) {
+            background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);
+        }
+
+        /* 提案2：パターンオーバーレイ型 */
+        .proposal-2 .sample-section:nth-child(1) {
+            background: 
+                radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.1) 1px, transparent 0),
+                #ffffff;
+            background-size: 20px 20px;
+        }
+
+        .proposal-2 .sample-section:nth-child(2) {
+            background: 
+                linear-gradient(45deg, transparent 40%, rgba(59, 130, 246, 0.05) 50%, transparent 60%),
+                #ffffff;
+            background-size: 30px 30px;
+        }
+
+        .proposal-2 .sample-section:nth-child(3) {
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(59, 130, 246, 0.03) 10px,
+                    rgba(59, 130, 246, 0.03) 11px
+                ),
+                #ffffff;
+        }
+
+        /* 提案3：カード型レイアウト */
+        .proposal-3 {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 3rem 2rem;
+        }
+
+        .proposal-3 .sample-section {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        /* 提案4：ブランドカラー統一型 */
+        .proposal-4 .sample-section:nth-child(1) {
+            background: rgba(59, 130, 246, 0.03);
+        }
+
+        .proposal-4 .sample-section:nth-child(2) {
+            background: rgba(59, 130, 246, 0.06);
+        }
+
+        .proposal-4 .sample-section:nth-child(3) {
+            background: rgba(59, 130, 246, 0.09);
+        }
+
+        /* 提案5：ミニマル単色型 */
+        .proposal-5 .sample-section {
+            background: #ffffff;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+        }
+
+        .proposal-5 .sample-section:last-child {
+            border-bottom: none;
+        }
+
+        .proposal-5 .sample-section:nth-child(even) {
+            background: rgba(248, 250, 252, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">背景デザイン提案デモ</h1>
+
+        <!-- 提案1：グラデーション統一型 -->
+        <div class="demo-section proposal-1">
+            <div class="demo-header">提案1：グラデーション統一型</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">サービス概要</h2>
+                    <p class="sample-text">全セクションを共通のサブトルなグラデーション背景に統一。各セクションで微妙に濃度を変えて区切りを表現します。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">料金プラン</h2>
+                    <p class="sample-text">統一感がありながらも、各セクションが自然に区別される上品なデザインです。</p>
+                    <a href="#" class="sample-button">お問い合わせ</a>
+                </div>
+            </div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">お客様の声</h2>
+                    <p class="sample-text">グラデーションの変化が視覚的なリズムを生み出し、読みやすさを向上させます。</p>
+                    <a href="#" class="sample-button">事例を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 提案2：パターンオーバーレイ型 -->
+        <div class="demo-section proposal-2">
+            <div class="demo-header">提案2：パターンオーバーレイ型</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">サービス概要</h2>
+                    <p class="sample-text">白ベースに微細なパターンをオーバーレイ。ドット、ライン、グリッドなどのパターンで高級感を演出します。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">料金プラン</h2>
+                    <p class="sample-text">各セクションで異なるパターンを使用することで、統一感を保ちながら変化をつけます。</p>
+                    <a href="#" class="sample-button">お問い合わせ</a>
+                </div>
+            </div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">お客様の声</h2>
+                    <p class="sample-text">サブトルなテクスチャが上品で洗練された印象を与えます。</p>
+                    <a href="#" class="sample-button">事例を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 提案3：カード型レイアウト -->
+        <div class="demo-section proposal-3">
+            <div class="demo-header">提案3：カード型レイアウト</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">サービス概要</h2>
+                    <p class="sample-text">各セクションを独立したカードとして配置。白背景のカードに統一されたシャドウで立体感を演出します。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">料金プラン</h2>
+                    <p class="sample-text">セクション間にスペースを設けることで、コンテンツが整理され読みやすくなります。</p>
+                    <a href="#" class="sample-button">お問い合わせ</a>
+                </div>
+            </div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">お客様の声</h2>
+                    <p class="sample-text">モダンで清潔感のあるデザインで、プロフェッショナルな印象を与えます。</p>
+                    <a href="#" class="sample-button">事例を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 提案4：ブランドカラー統一型 -->
+        <div class="demo-section proposal-4">
+            <div class="demo-header">提案4：ブランドカラー統一型</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">サービス概要</h2>
+                    <p class="sample-text">メインのブルー系色相で濃淡をつけた背景。非常に薄いブルーのトーンで統一感を保ちます。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">料金プラン</h2>
+                    <p class="sample-text">ブランドカラーを活用することで、一貫性のあるブランド体験を提供します。</p>
+                    <a href="#" class="sample-button">お問い合わせ</a>
+                </div>
+            </div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">お客様の声</h2>
+                    <p class="sample-text">微妙な濃度の変化がセクションを自然に区別し、視覚的な階層を作ります。</p>
+                    <a href="#" class="sample-button">事例を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 提案5：ミニマル単色型 -->
+        <div class="demo-section proposal-5">
+            <div class="demo-header">提案5：ミニマル単色型</div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">サービス概要</h2>
+                    <p class="sample-text">純粋な白背景に統一。セクション区切りは十分な余白とサブトルな要素で表現します。</p>
+                    <a href="#" class="sample-button">詳細を見る</a>
+                </div>
+            </div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">料金プラン</h2>
+                    <p class="sample-text">ミニマルで洗練されたデザイン。コンテンツに最大限フォーカスできます。</p>
+                    <a href="#" class="sample-button">お問い合わせ</a>
+                </div>
+            </div>
+            <div class="sample-section">
+                <div class="sample-content">
+                    <h2 class="sample-title">お客様の声</h2>
+                    <p class="sample-text">モダンで洗練された印象を与え、高級感のあるブランドイメージを構築します。</p>
+                    <a href="#" class="sample-button">事例を見る</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

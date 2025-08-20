@@ -1,12 +1,10 @@
 assessment/
 assessment2/
-videos/
-*.mp4
-*.png
-*.jpg
-*.jpeg
-*.mov
 *.zip
 *.exe
 *.dmg
 *.DS_Store
+
+# Only ignore very large files (over 50MB)
+*[5-9][0-9]MB*
+*[0-9]GB*

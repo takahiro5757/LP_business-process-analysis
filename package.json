@@ -1,0 +1,13 @@
+{
+  "name": "dx-business-diagnosis-lp",
+  "version": "1.0.0",
+  "description": "DX業務診断ランディングページ",
+  "main": "landing-page.html",
+  "scripts": {
+    "build": "echo 'Static site - no build required'",
+    "start": "echo 'Static site - open landing-page.html in browser'"
+  },
+  "keywords": ["landing-page", "dx", "business", "diagnosis"],
+  "author": "Festal",
+  "license": "MIT"
+}

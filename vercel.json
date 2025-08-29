@@ -1,8 +1,9 @@
 {
   "version": 2,
+  "name": "dx-business-diagnosis-lp",
   "builds": [
     {
-      "src": "landing-page.html",
+      "src": "**/*",
       "use": "@vercel/static"
     }
   ],
@@ -10,6 +11,10 @@
     {
       "src": "/",
       "dest": "/landing-page.html"
+    },
+    {
+      "src": "/image/(.*)",
+      "dest": "/image/$1"
     },
     {
       "src": "/(.*)",

@@ -9,12 +9,15 @@
   ],
   "routes": [
     {
-      "src": "/",
-      "dest": "/landing-page.html"
+      "src": "/image/(.*)",
+      "dest": "/image/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
     },
     {
-      "src": "/image/(.*)",
-      "dest": "/image/$1"
+      "src": "/",
+      "dest": "/landing-page.html"
     },
     {
       "src": "/(.*)",
@@ -22,5 +25,7 @@
     }
   ],
   "outputDirectory": ".",
-  "public": true
+  "public": true,
+  "functions": {},
+  "regions": ["nrt1"]
 }

@@ -1,0 +1,3605 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>業務整理LP - Hero Section - Festal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and base styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Meiryo', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
+            line-height: 1;
+            overflow-x: hidden;
+        }
+        
+        /* Figma Colors - Extracted from the design */
+        :root {
+            --color-header-bg: #ffffff;
+            --color-hero-gradient-start: #1e32ae;
+            --color-hero-gradient-end: #98b1d4;
+            --color-hero-overlay: rgba(152, 177, 212, 0.5);
+            --color-text-white: #ffffff;
+            --color-text-light: #fffefc;
+            --color-text-secondary: #dbd2d2;
+            --color-accent-gold: #ecb934;
+            --color-btn-primary: #2862e3;
+            --color-btn-shadow: rgba(0,0,0,0.25);
+        }
+        
+        /* Header Section */
+        .c-header {
+            position: relative;
+            background-color: var(--color-header-bg);
+            height: 108px;
+            width: 100%;
+            overflow: hidden;
+            z-index: 10;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .c-header__content {
+            max-width: 1440px;
+            margin: 0 auto;
+            position: relative;
+            height: 100%;
+        }
+        
+        .c-header__logo {
+            position: absolute;
+            left: 120px;
+            top: 27px;
+            width: 169px;
+            height: 54px;
+        }
+        
+        .c-header__logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .c-header__nav {
+            position: absolute;
+            right: 43px;
+            top: 30px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            height: 48px;
+        }
+        
+        .c-header__nav-item {
+            color: #000000;
+            font-size: 19px;
+            font-weight: bold;
+            text-decoration: none;
+            line-height: 60px;
+            white-space: nowrap;
+            transition: opacity 0.3s ease;
+        }
+        
+        .c-header__nav-item:hover {
+            opacity: 0.8;
+        }
+        
+        /* Hero Section */
+        .c-hero {
+            position: relative;
+            height: 100vh;
+            min-height: 800px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .c-hero__bg-image {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('image/hero/DSC03121-2.jpg');
+            background-size: cover;
+            background-position: 65% center;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+        
+        .c-hero__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to left, var(--color-hero-overlay) 0%, var(--color-hero-gradient-start) 48.438%);
+            opacity: 0.7;
+            z-index: 2;
+        }
+        
+        .c-hero__content {
+            position: relative;
+            max-width: 1440px;
+            margin: 0 auto;
+            height: 100%;
+            z-index: 3;
+        }
+        
+        .c-hero__text-container {
+            position: absolute;
+            left: 120px;
+            top: 0;
+        }
+        
+        .c-hero__main-title {
+            position: absolute;
+            left: 0;
+            top: 104px;
+            width: 800px;
+            height: 77px;
+            color: var(--color-text-light);
+            font-size: 61px;
+            font-weight: bold;
+            text-align: left;
+            line-height: 60px;
+        }
+        
+        .c-hero__sub-title {
+            position: absolute;
+            left: 0;
+            top: 180px;
+            width: 587px;
+            height: 66px;
+            color: var(--color-text-light);
+            font-size: 61px;
+            font-weight: bold;
+            text-align: left;
+            line-height: 60px;
+        }
+        
+        .c-hero__sub-title-highlight {
+            color: var(--color-accent-gold);
+        }
+        
+        .c-hero__proposal-title {
+            position: absolute;
+            left: 0;
+            top: 256px;
+            width: 200px;
+            height: 66px;
+            color: var(--color-text-light);
+            font-size: 61px;
+            font-weight: bold;
+            text-align: left;
+            line-height: 60px;
+        }
+        
+        .c-hero__cost-label {
+            position: absolute;
+            left: 0;
+            top: 450px;
+            width: 77px;
+            height: 24px;
+            color: var(--color-text-secondary);
+            font-size: 15px;
+            font-weight: bold;
+            text-align: left;
+            line-height: 60px;
+        }
+        
+        .c-hero__price {
+            position: absolute;
+            left: 0;
+            top: 510px;
+            width: 500px;
+            height: 40px;
+            color: var(--color-text-light);
+            font-size: 61px;
+            font-weight: bold;
+            text-align: left;
+            line-height: 40px;
+        }
+        
+        .c-hero__price-tax {
+            color: var(--color-text-secondary);
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .c-hero__description {
+            position: absolute;
+            left: 0;
+            top: 340px;
+            width: 349px;
+            height: 50px;
+            color: var(--color-text-secondary);
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 25px;
+        }
+        
+        .c-hero__cta-button {
+            position: absolute;
+            left: 0;
+            top: 591px;
+            width: 200px;
+            height: 53px;
+            background-color: var(--color-btn-primary);
+            border-radius: 15px;
+            box-shadow: 0px 4px 4px 0px var(--color-btn-shadow);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .c-hero__cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 6px 8px 0px var(--color-btn-shadow);
+        }
+        
+        .c-hero__cta-icon {
+            position: absolute;
+            left: 22px;
+            top: 11px;
+            width: 31px;
+            height: 31px;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        .c-hero__cta-text {
+            position: absolute;
+            left: 71px;
+            top: 11px;
+            width: 143px;
+            height: 31px;
+            color: var(--color-text-white);
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 25px;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1440px) {
+            .c-header__content,
+            .c-hero__content {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            
+            .c-header__logo {
+                left: 20px;
+                width: 140px;
+                height: 45px;
+                top: 31px;
+            }
+            
+            .c-header__nav {
+                right: 20px;
+                gap: 30px;
+            }
+            
+            .c-header__nav-item {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .c-header {
+                height: 80px;
+            }
+            
+            .c-header__logo {
+                left: 15px;
+                width: 120px;
+                height: 35px;
+                top: 22px;
+            }
+            
+            .c-header__nav {
+                display: none;
+            }
+            
+            .c-hero {
+                height: 600px;
+            }
+            
+            .c-hero__bg-image {
+                left: -100px;
+                width: calc(100vw + 200px);
+                height: 600px;
+                background-size: cover;
+                background-position: center;
+            }
+            
+            .c-hero__overlay {
+                height: 600px;
+            }
+            
+            .c-hero__text-container {
+                left: 20px;
+                width: calc(100% - 40px);
+            }
+            
+            .c-hero__main-title {
+                position: relative;
+                left: 0;
+                top: 80px;
+                width: 100%;
+                font-size: 36px;
+                transform: none;
+                text-align: left;
+            }
+            
+            .c-hero__sub-title {
+                position: relative;
+                left: 0;
+                top: 120px;
+                width: 100%;
+                font-size: 36px;
+                transform: none;
+                text-align: left;
+            }
+            
+            .c-hero__cost-label {
+                position: relative;
+                left: 0;
+                top: 180px;
+                width: auto;
+                transform: none;
+                text-align: left;
+            }
+            
+            .c-hero__price {
+                position: relative;
+                left: 0;
+                top: 200px;
+                width: auto;
+                font-size: 48px;
+                transform: none;
+                text-align: left;
+            }
+            
+            .c-hero__description {
+                position: relative;
+                left: 0;
+                top: 260px;
+                width: 100%;
+                max-width: 320px;
+            }
+            
+            .c-hero__cta-button {
+                position: relative;
+                left: 0;
+                top: 320px;
+                width: 200px;
+                height: 48px;
+            }
+            
+            .c-hero__cta-text {
+                font-size: 14px;
+                left: 55px;
+                top: 9px;
+                width: 120px;
+                height: 30px;
+            }
+            
+            .c-hero__cta-icon {
+                width: 28px;
+                height: 28px;
+                left: 18px;
+                top: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .c-hero__main-title,
+            .c-hero__sub-title {
+                font-size: 28px;
+                line-height: 1.2;
+            }
+            
+            .c-hero__price {
+                font-size: 42px;
+            }
+            
+            .c-hero__description {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+        }
+        
+        /* Issue Section */
+        .c-issue {
+            position: relative;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            height: 804px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .c-issue::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+        
+        .c-issue__content {
+            position: relative;
+            max-width: 1440px;
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        
+        .c-issue__title {
+            position: absolute;
+            left: 50%;
+            top: 60px;
+            width: 659px;
+            height: 103px;
+            color: #000000;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 60px;
+            transform: translateX(-50%);
+        }
+        
+        .c-issue__title-highlight {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 0 4px;
+        }
+        
+        .c-issue__underline {
+            position: absolute;
+            left: calc(50% - 329px);
+            top: 102px;
+            width: 245px;
+            height: 4px;
+            background-color: #f9b119;
+        }
+        
+        /* Issue Cards - Top Row */
+        .c-issue__cards-top {
+            position: absolute;
+            left: 50%;
+            top: 187px;
+            display: flex;
+            gap: 61px;
+            width: 1177px;
+            transform: translateX(-50%);
+        }
+        
+        .c-issue__cards-bottom {
+            position: absolute;
+            left: 50%;
+            top: 508px;
+            display: flex;
+            gap: 65px;
+            width: 1191px;
+            transform: translateX(-50%);
+        }
+        
+        .c-issue__card {
+            background-color: #ffffff;
+            width: 358px;
+            height: 247px;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .c-issue__card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .c-issue__card-case {
+            position: absolute;
+            left: 50%;
+            top: 80px;
+            width: 109px;
+            height: 30px;
+            color: #015db2;
+            font-size: 23px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 30px;
+            transform: translateX(-50%);
+        }
+        
+        .c-issue__card-case-number {
+            font-size: 21px;
+        }
+        
+        .c-issue__card-title {
+            position: absolute;
+            left: 50%;
+            top: 130px;
+            width: 283px;
+            height: 43px;
+            color: #000000;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 43px;
+            transform: translateX(-50%);
+        }
+        
+        .c-issue__card-description {
+            position: absolute;
+            left: 30px;
+            top: 180px;
+            width: 298px;
+            height: 50px;
+            color: #000000;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 22px;
+        }
+        
+        /* Issue Icons - Positioned above cards at front */
+        .c-issue__icon-1 {
+            position: absolute;
+            left: calc(50% - 480px);
+            top: 130px;
+            width: 120px;
+            height: 120px;
+            background-image: url('image/issue/課題１.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 10;
+        }
+        
+        .c-issue__icon-2 {
+            position: absolute;
+            left: calc(50% - 60px);
+            top: 130px;
+            width: 120px;
+            height: 120px;
+            background-image: url('image/issue/課題２.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 10;
+        }
+        
+        .c-issue__icon-3 {
+            position: absolute;
+            left: calc(50% + 360px);
+            top: 130px;
+            width: 120px;
+            height: 120px;
+            background-image: url('image/issue/課題３.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 10;
+        }
+        
+        .c-issue__icon-4 {
+            position: absolute;
+            left: calc(50% - 480px);
+            top: 450px;
+            width: 120px;
+            height: 120px;
+            background-image: url('image/issue/課題４.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 10;
+        }
+        
+        .c-issue__icon-5 {
+            position: absolute;
+            left: calc(50% - 60px);
+            top: 450px;
+            width: 120px;
+            height: 120px;
+            background-image: url('image/issue/課題５.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 10;
+        }
+        
+        .c-issue__icon-6 {
+            position: absolute;
+            left: calc(50% + 360px);
+            top: 450px;
+            width: 120px;
+            height: 120px;
+            background-image: url('image/issue/課題６.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 10;
+        }
+        
+        /* Responsive Design for Issue Section */
+        @media (max-width: 1440px) {
+            .c-issue__cards-top,
+            .c-issue__cards-bottom {
+                left: 20px;
+                right: 20px;
+                justify-content: space-between;
+            }
+            
+            .c-issue__card {
+                flex: 1;
+                max-width: 358px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .c-issue {
+                height: auto;
+                padding: 40px 0;
+            }
+            
+            .c-issue__title {
+                position: relative;
+                left: auto;
+                top: auto;
+                width: 100%;
+                font-size: 24px;
+                margin-bottom: 30px;
+                transform: none;
+            }
+            
+            .c-issue__underline {
+                left: 50%;
+                top: 60px;
+                width: 150px;
+                transform: translateX(-50%);
+            }
+            
+            .c-issue__cards-top,
+            .c-issue__cards-bottom {
+                position: relative;
+                left: 20px;
+                top: auto;
+                flex-direction: column;
+                gap: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .c-issue__card {
+                width: calc(100vw - 40px);
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .c-issue__icon-1,
+            .c-issue__icon-2,
+            .c-issue__icon-3,
+            .c-issue__icon-4,
+            .c-issue__icon-5,
+            .c-issue__icon-6 {
+                display: none;
+            }
+        }
+        
+        /* Demo Section */
+        .c-demo {
+            position: relative;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            height: 789px;
+            width: 100%;
+            overflow: hidden;
+            display: none;
+        }
+        
+        .c-demo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+        
+        .c-demo__content {
+            position: relative;
+            max-width: 1440px;
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        
+        .c-demo__title {
+            position: absolute;
+            left: 50%;
+            top: 60px;
+            width: 1038px;
+            height: 92px;
+            color: #000000;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 60px;
+            transform: translateX(-50%);
+        }
+        
+        .c-demo__title-highlight {
+            color: #015db2;
+        }
+        
+        .c-demo__subtitle {
+            position: absolute;
+            left: 50%;
+            top: 126.5px;
+            width: 575px;
+            height: 65px;
+            color: #7d7676;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 25px;
+            transform: translateX(-50%);
+        }
+        
+        .c-demo__underline {
+            position: absolute;
+            left: calc(50% - 144px);
+            top: 102px;
+            width: 224px;
+            height: 4px;
+            background-color: #f9b119;
+        }
+        
+        .c-demo__container {
+            position: absolute;
+            left: 161px;
+            top: 172px;
+            width: 1117px;
+            height: 556px;
+            background-color: #fffcfc;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .c-demo__container-title {
+            position: absolute;
+            left: 50%;
+            top: 42.5px;
+            width: 390px;
+            height: 35px;
+            color: #000000;
+            font-size: 26px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 60px;
+            transform: translateX(-50%);
+        }
+        
+        .c-demo__container-description {
+            position: absolute;
+            left: 50%;
+            top: 98.5px;
+            width: 514px;
+            height: 67px;
+            color: #7d7676;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 25px;
+            transform: translateX(-50%);
+        }
+        
+        /* Responsive Design for Demo Section */
+        @media (max-width: 1440px) {
+            .c-demo__content {
+                padding: 0 20px;
+            }
+            
+            .c-demo__container {
+                left: 20px;
+                width: calc(100% - 40px);
+                max-width: 1117px;
+                margin: 0 auto;
+            }
+            
+            .c-demo__underline {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .c-demo {
+                height: auto;
+                padding: 40px 0;
+            }
+            
+            .c-demo__title {
+                position: relative;
+                left: auto;
+                top: auto;
+                width: 100%;
+                font-size: 24px;
+                margin-bottom: 20px;
+                transform: none;
+            }
+            
+            .c-demo__subtitle {
+                position: relative;
+                left: auto;
+                top: auto;
+                width: 100%;
+                font-size: 16px;
+                margin-bottom: 30px;
+                transform: none;
+            }
+            
+            .c-demo__underline {
+                position: relative;
+                left: 50%;
+                top: auto;
+                width: 150px;
+                margin: 0 auto 30px;
+                transform: translateX(-50%);
+            }
+            
+            .c-demo__container {
+                position: relative;
+                left: auto;
+                top: auto;
+                width: 100%;
+                height: auto;
+                min-height: 400px;
+                margin: 0 auto;
+            }
+            
+            .c-demo__container-title {
+                font-size: 20px;
+            }
+            
+            .c-demo__container-description {
+                font-size: 16px;
+                width: 90%;
+            }
+        }
+        
+        /* ========================================
+           Fee Section Styles - New Design
+        ======================================== */
+        .c-fee {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background: #ffffff;
+            overflow: hidden;
+            padding: 80px 0;
+        }
+        
+        .c-fee__content {
+            position: relative;
+            max-width: 1440px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px;
+            z-index: 2;
+        }
+        
+        .c-fee__title {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .c-fee__title-main {
+            display: block;
+            color: #015db2;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            text-decoration: underline;
+            text-underline-offset: 8px;
+            text-decoration-thickness: 3px;
+        }
+        
+        .c-fee__title-sub {
+            display: block;
+            color: #7d7676;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+        
+        /* Price Display */
+        .c-fee__price-display {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .c-fee__price-main {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            margin-top: -65px;
+        }
+        
+        .c-fee__price-amount {
+            color: #333333;
+            font-size: 72px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        
+        .c-fee__price-tax {
+            color: #7d7676;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        /* Main Service Card */
+        /* Deliverables Section */
+        .c-fee__deliverables {
+            margin-bottom: 80px;
+        }
+        
+        .c-fee__deliverables-title {
+            color: #333333;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .c-fee__deliverables-cards {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .c-fee__deliverable-card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            width: 320px;
+            text-align: center;
+        }
+        
+        .c-fee__deliverable-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .c-fee__deliverable-number {
+            width: 60px;
+            height: 60px;
+            background: #f9b119;
+            border-radius: 50%;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+        
+        .c-fee__deliverable-title {
+            color: #000000;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        
+        .c-fee__deliverable-description {
+            color: #7d7676;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .c-fee__cta-container {
+            text-align: center;
+        }
+        
+        .c-fee__cta-button {
+            display: inline-block;
+            width: 220px;
+            height: 53px;
+            background-color: var(--color-btn-primary);
+            border-radius: 15px;
+            box-shadow: 0px 4px 4px 0px var(--color-btn-shadow);
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+        
+        .c-fee__cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 6px 8px 0px var(--color-btn-shadow);
+        }
+        
+        .c-fee__cta-icon {
+            position: absolute;
+            left: 22px;
+            top: 11px;
+            width: 31px;
+            height: 31px;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        .c-fee__cta-text {
+            position: absolute;
+            left: 71px;
+            top: 11px;
+            width: 143px;
+            height: 31px;
+            color: var(--color-text-white);
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 25px;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .c-fee__deliverables-cards {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .c-fee__deliverable-card {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .c-fee {
+                padding: 60px 0;
+            }
+            
+            .c-fee__title-main {
+                font-size: 28px;
+            }
+            
+            .c-fee__title-sub {
+                font-size: 18px;
+            }
+            
+            .c-fee__price-amount {
+                font-size: 56px;
+            }
+            
+            .c-fee__deliverables-title {
+                font-size: 24px;
+            }
+            
+            .c-fee__deliverable-card {
+                padding: 30px 25px;
+            }
+            
+            .c-fee__cta-button {
+                padding: 18px 35px;
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .c-fee__title-main {
+                font-size: 24px;
+            }
+            
+            .c-fee__price-amount {
+                font-size: 48px;
+            }
+            
+            .c-fee__deliverable-card {
+                padding: 25px 20px;
+            }
+            
+            .c-fee__cta-button {
+                padding: 16px 30px;
+                font-size: 16px;
+            }
+        }
+        
+        /* ========================================
+           3Step Section Styles
+        ======================================== */
+        .c-threestep {
+            position: relative;
+            width: 100%;
+            height: 821px;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            overflow: hidden;
+        }
+        
+        .c-threestep::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+        
+        .c-threestep__content {
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        
+        .c-threestep__title {
+            position: absolute;
+            left: 50%;
+            top: 60px;
+            width: 766px;
+            height: 127px;
+            color: #000000;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 60px;
+            transform: translateX(-50%);
+        }
+        
+        .c-threestep__title-highlight {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 0 4px;
+        }
+        
+        .c-threestep__underline {
+            position: absolute;
+            left: calc(50% - 200px);
+            top: 102px;
+            width: 147px;
+            height: 6px;
+            background-color: #f9b119;
+        }
+        
+        .c-threestep__steps-container {
+            position: absolute;
+            left: 50%;
+            top: 143px;
+            width: 1260px;
+            height: 566px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            transform: translateX(-50%);
+        }
+        
+        .c-threestep__step {
+            position: relative;
+            width: 374px;
+            height: 552px;
+        }
+        
+        .c-threestep__step-card {
+            position: relative;
+            width: 374px;
+            height: 490px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            margin-top: 55px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .c-threestep__step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .c-threestep__step-circle {
+            position: absolute;
+            left: 28px;
+            top: -22px;
+            width: 100px;
+            height: 36px;
+            background: #015db2;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            box-shadow: 0 4px 12px rgba(1, 93, 178, 0.3);
+        }
+        
+        .c-threestep__step-label {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1;
+            letter-spacing: 0.5px;
+            flex: 1;
+            padding-left: 4px;
+        }
+        
+        .c-threestep__step-number {
+            color: #015db2;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1;
+            background: #ffffff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            text-align: center;
+            position: relative;
+            margin-left: 6px;
+        }
+        
+        .c-threestep__step-title {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            width: 269px;
+            height: 54px;
+            color: #000000;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 60px;
+            transform: translateX(-50%);
+        }
+        
+        .c-threestep__step-description {
+            position: absolute;
+            left: 34px;
+            top: 100px;
+            width: 305px;
+            height: 58px;
+            color: #7d7676;
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 25px;
+        }
+        
+        .c-threestep__step-points {
+            position: absolute;
+            left: 34px;
+            top: 160px;
+            width: 269px;
+            color: #000000;
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 28px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .c-threestep__step-points li::before {
+            content: "・";
+            margin-right: 5px;
+        }
+        
+        .c-threestep__step-image {
+            position: absolute;
+            left: 6px;
+            bottom: -265px;
+            width: 362px;
+            height: 203px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .c-threestep__step-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin-top: 30px;
+            object-position: top;
+        }
+        
+        .c-threestep__step-image--clickable {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .c-threestep__image-overlay {
+            position: absolute;
+            bottom: 45px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .c-threestep__step-image--clickable:hover .c-threestep__image-overlay {
+            opacity: 1;
+        }
+        
+        .c-threestep__zoom-icon {
+            font-size: 14px;
+        }
+        
+        /* Image Modal Styles */
+        .c-image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            cursor: pointer;
+        }
+        
+        .c-image-modal.is-open {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .c-image-modal__content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            cursor: default;
+        }
+        
+        .c-image-modal__image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .c-image-modal__close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        
+        .c-image-modal__title {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .c-threestep__image-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: max-content;
+            height: 30px;
+            background-color: #015db2;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .c-threestep__arrow {
+            position: relative;
+            top: 223px;
+            width: 55px;
+            height: 77px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .c-threestep__arrow-symbol {
+            font-size: 48px;
+            font-weight: bold;
+            color: #333333;
+            line-height: 1;
+        }
+
+        /* ========================================
+           Company Section Styles - Modern Redesign
+           ======================================== */
+        
+        /* Company Section */
+        .c-company {
+            position: relative;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            min-height: auto;
+            width: 100%;
+            overflow: hidden;
+            padding: 60px 0;
+        }
+        
+        .c-company::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+        
+        .c-company__content {
+            position: relative;
+            max-width: 1440px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px;
+            z-index: 2;
+        }
+        
+        .c-company__title {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .c-company__title-main {
+            display: block;
+            color: #000000;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        
+
+        
+        .c-company__logo {
+            position: relative;
+            width: 222px;
+            height: 60px;
+            margin: 0 auto 60px;
+        }
+        
+        .c-company__logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(0) saturate(100%);
+        }
+        
+        .c-company__cards-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 20px auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        /* 左側：ブランディングと理念 */
+        .c-company__left-section {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 2px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .c-company__left-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #015db2 0%, #667eea 50%, #764ba2 100%);
+        }
+        
+        .c-company__branding {
+            text-align: center;
+        }
+        
+        .c-company__logo-container {
+            margin-bottom: 30px;
+        }
+        
+        .c-company__brand-logo {
+            width: 120px;
+            height: auto;
+            filter: brightness(0) saturate(100%);
+        }
+        
+        .c-company__tagline {
+            color: #374151;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+        
+        .c-company__mission-text {
+            color: #6b7280;
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: left;
+        }
+        
+        /* 右側：会社情報の詳細 */
+        .c-company__right-section {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 2px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .c-company__right-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #015db2 0%, #667eea 50%, #764ba2 100%);
+        }
+        
+        .c-company__info-table {
+            width: 100%;
+        }
+        
+        .c-company__info-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e7eb;
+            gap: 20px;
+        }
+        
+        .c-company__info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .c-company__info-label {
+            min-width: 120px;
+            color: #6b7280;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.4;
+            flex-shrink: 0;
+        }
+        
+        .c-company__info-value {
+            color: #111827;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+            flex: 1;
+        }
+        
+        /* Company Philosophy */
+
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .c-company__cards-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                max-width: 600px;
+            }
+            
+            .c-company__info-card,
+            .c-company__vision-card {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .c-company {
+                padding: 60px 0;
+            }
+            
+            .c-company__title-main {
+                font-size: 28px;
+            }
+            
+            .c-company__title-sub {
+                font-size: 18px;
+            }
+            
+            .c-company__logo {
+                width: 180px;
+                height: 50px;
+                margin-bottom: 40px;
+            }
+            
+            .c-company__info-card,
+            .c-company__vision-card {
+                padding: 25px;
+            }
+            
+            .c-company__info-title,
+            .c-company__vision-title {
+                font-size: 24px;
+            }
+            
+            .c-company__philosophy-title {
+                font-size: 18px;
+            }
+            
+            .c-company__philosophy-highlight {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .c-company__title-main {
+                font-size: 24px;
+            }
+            
+            .c-company__info-card,
+            .c-company__vision-card {
+                padding: 20px;
+            }
+            
+            .c-company__info-title,
+            .c-company__vision-title {
+                font-size: 20px;
+            }
+        }
+
+        /* ========================================
+           FAQ Section Styles
+           ======================================== */
+        
+        /* FAQ Section */
+        .c-faq {
+            position: relative;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            padding: 80px 0 100px;
+            width: 100%;
+        }
+        
+        .c-faq::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+        
+        .c-faq__content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px;
+            z-index: 2;
+        }
+        
+        .c-faq__title {
+            position: relative;
+            width: 100%;
+            color: #000000;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.4;
+            margin: 0 0 15px 0;
+        }
+        
+        .c-faq__subtitle {
+            position: relative;
+            width: 100%;
+            color: #7d7676;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.6;
+            margin: 0 0 70px 0;
+        }
+        
+        .c-faq__container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            gap: 15px;
+        }
+        
+        .c-faq__item {
+            position: relative;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+        }
+        
+        .c-faq__item:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+        
+        .c-faq__question {
+            position: relative;
+            width: 100%;
+            padding: 28px 30px;
+            cursor: pointer;
+            background-color: transparent;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            border: none;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        
+        .c-faq__question:hover {
+            background-color: #f8f9fb;
+        }
+        
+        .c-faq__question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #015db2, #4A5BF6);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .c-faq__question-text {
+            color: #1a1a1a;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.5;
+            flex: 1;
+            margin: 0;
+        }
+        
+        .c-faq__toggle-icon {
+            position: relative;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f4f8;
+            border-radius: 50%;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .c-faq__toggle-icon::before,
+        .c-faq__toggle-icon::after {
+            content: '';
+            position: absolute;
+            background-color: #015db2;
+            transition: all 0.3s ease;
+        }
+        
+        .c-faq__toggle-icon::before {
+            width: 12px;
+            height: 2px;
+        }
+        
+        .c-faq__toggle-icon::after {
+            width: 2px;
+            height: 12px;
+        }
+        
+        .c-faq__item--open .c-faq__toggle-icon {
+            background-color: #015db2;
+            transform: rotate(45deg);
+        }
+        
+        .c-faq__item--open .c-faq__toggle-icon::before,
+        .c-faq__item--open .c-faq__toggle-icon::after {
+            background-color: #ffffff;
+        }
+        
+        .c-faq__answer {
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
+            background-color: #f8f9fb;
+            border-top: 1px solid #e8ebef;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        
+        .c-faq__item--open .c-faq__answer {
+            max-height: 500px;
+            padding: 25px 30px 30px;
+        }
+        
+        .c-faq__answer-content {
+            padding-left: 48px;
+        }
+        
+        .c-faq__answer-text {
+            color: #4a5568;
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        .c-faq__answer-list {
+            color: #4a5568;
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 1.7;
+            margin: 8px 0 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .c-faq__answer-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .c-faq__answer-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #015db2;
+            font-weight: bold;
+        }
+        
+        /* Responsive Design for FAQ */
+        @media (max-width: 768px) {
+            .c-faq {
+                padding: 60px 0 80px;
+            }
+            
+            .c-faq__title {
+                font-size: 28px;
+                margin-bottom: 10px;
+            }
+            
+            .c-faq__subtitle {
+                font-size: 16px;
+                margin-bottom: 50px;
+            }
+            
+            .c-faq__question {
+                padding: 20px 20px;
+                gap: 15px;
+            }
+            
+            .c-faq__question-text {
+                font-size: 16px;
+            }
+            
+            .c-faq__answer-content {
+                padding-left: 0;
+            }
+            
+            .c-faq__item--open .c-faq__answer {
+                padding: 20px 20px 25px;
+            }
+        }
+
+        /* ========================================
+           Contact Section Styles
+           ======================================== */
+        
+        /* Contact Section */
+        .c-contact {
+            position: relative;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            padding: 80px 0;
+            width: 100%;
+        }
+        
+        .c-contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+        
+        .c-contact__content {
+            position: relative;
+            max-width: 1440px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px;
+            z-index: 2;
+        }
+        
+        .c-contact__title {
+            position: relative;
+            width: 100%;
+            height: 45px;
+            color: #000000;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 45px;
+            margin: 0 0 20px 0;
+        }
+        
+        .c-contact__subtitle {
+            position: relative;
+            width: 100%;
+            color: #7d7676;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.6;
+            margin: 0 0 60px 0;
+        }
+        
+        .c-contact__container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .c-contact__form {
+            position: relative;
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+        }
+        
+        .c-contact__form-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .c-contact__form-group {
+            position: relative;
+            flex: 1;
+        }
+        
+        .c-contact__form-group--full {
+            flex: none;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        .c-contact__label {
+            display: block;
+            color: #000000;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .c-contact__required {
+            color: #e74c3c;
+            font-size: 14px;
+            font-weight: normal;
+        }
+        
+        .c-contact__input,
+        .c-contact__select,
+        .c-contact__textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #ffffff;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .c-contact__input:focus,
+        .c-contact__select:focus,
+        .c-contact__textarea:focus {
+            outline: none;
+            border-color: #015db2;
+        }
+        
+        .c-contact__textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .c-contact__form-submit {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .c-contact__submit-btn {
+            background-color: #015db2;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .c-contact__submit-btn:hover {
+            background-color: #0147a0;
+        }
+        
+        .c-contact__privacy-note {
+            color: #666666;
+            font-size: 14px;
+            margin-top: 20px;
+            margin-bottom: 0;
+            line-height: 20px;
+        }
+        
+        /* Success Message Styles */
+        .c-contact__success-message {
+            background: linear-gradient(135deg, #d4f4e1 0%, #b8e6d1 100%);
+            border: 2px solid #10b981;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            text-align: center;
+            animation: slideInUp 0.5s ease-out;
+        }
+        
+        .c-contact__success-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .c-contact__success-icon {
+            font-size: 48px;
+            color: #10b981;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .c-contact__success-title {
+            color: #065f46;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .c-contact__success-text {
+            color: #047857;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1400px) {
+            .c-threestep__steps-container {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 1260px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .c-threestep {
+                height: auto;
+                padding: 60px 0;
+            }
+            
+            .c-threestep__title {
+                position: relative;
+                left: auto;
+                top: auto;
+                width: 100%;
+                font-size: 28px;
+                margin-bottom: 20px;
+                transform: none;
+            }
+            
+            .c-threestep__underline {
+                position: relative;
+                left: 50%;
+                top: auto;
+                margin: 0 auto 40px;
+                transform: translateX(-50%);
+            }
+            
+            .c-threestep__steps-container {
+                position: relative;
+                left: auto;
+                top: auto;
+                width: 100%;
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+                transform: none;
+            }
+            
+            .c-threestep__arrow {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .c-threestep {
+                padding: 40px 0;
+            }
+            
+            .c-threestep__title {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+            
+            .c-threestep__step {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .c-threestep__step-card {
+                width: 100%;
+            }
+            
+            .c-threestep__step-image {
+                width: calc(100% - 12px);
+            }
+            
+            /* Company Section Responsive */
+            .c-company__cards-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 0 20px;
+            }
+            
+            .c-company__left-section,
+            .c-company__right-section {
+                padding: 30px 25px;
+            }
+            
+            .c-company__brand-logo {
+                width: 100px;
+            }
+            
+            .c-company__tagline {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            
+            .c-company__mission-text {
+                font-size: 15px;
+            }
+            
+            .c-company__info-row {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px 0;
+            }
+            
+            .c-company__info-label {
+                min-width: auto;
+                font-size: 14px;
+            }
+            
+            .c-company__info-value {
+                font-size: 14px;
+            }
+        }
+        
+        /* Value Proposition Section */
+        .c-value-proposition {
+            position: relative;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 100px 0;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .c-value-proposition::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+        }
+        
+        .c-value-proposition__content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            z-index: 2;
+        }
+        
+        .c-value-proposition__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0 auto 40px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .c-value-proposition__badge-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .c-value-proposition__badge-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .c-value-proposition__title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Meiryo', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
+        }
+        
+        .c-value-proposition__highlight {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 0 4px;
+            position: relative;
+        }
+        
+        .c-value-proposition__highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 8em;
+            height: 6px;
+            background-color: #f9b119;
+        }
+        
+        .c-value-proposition__subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: #7d7676;
+            font-weight: bold;
+            margin-bottom: 80px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Meiryo', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
+        }
+        
+        .c-value-proposition__cards-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        
+        .c-value-proposition__price-card,
+        .c-value-proposition__philosophy-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+            height: auto;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        
+        .c-value-proposition__price-card:hover,
+        .c-value-proposition__philosophy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .c-value-proposition__price-card::before,
+        .c-value-proposition__philosophy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #015db2 0%, #667eea 50%, #764ba2 100%);
+            border-radius: 24px 24px 0 0;
+        }
+        
+        .c-value-proposition__card-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .c-value-proposition__card-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 12px;
+            text-align: center;
+            font-family: 'Meiryo', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
+        }
+        
+        .c-value-proposition__philosophy-card .c-value-proposition__card-title {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        
+        .c-value-proposition__card-subtitle {
+            font-size: 16px;
+            color: #7d7676;
+            margin-bottom: 0;
+            text-align: center;
+            line-height: 1.5;
+            font-weight: bold;
+            font-family: 'Meiryo', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
+        }
+        
+        .c-value-proposition__philosophy-card .c-value-proposition__card-subtitle {
+            text-align: left;
+            margin-bottom: 0;
+        }
+        
+        .c-value-proposition__comparison {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            flex: 1;
+            position: relative;
+        }
+        
+        .c-value-proposition__comparison-item {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 0;
+            padding: 0;
+            position: relative;
+            margin-top: 30px;
+        }
+        
+        .c-value-proposition__comparison-item:nth-child(2) {
+            margin-top: -30px;
+        }
+        
+        .c-value-proposition__comparison-item:nth-child(2) .c-value-proposition__comparison-info {
+            margin-top: 25px;
+        }
+        
+        .c-value-proposition__comparison-item:nth-child(1) .c-value-proposition__comparison-info {
+            margin-top: -15px;
+        }
+        
+        .c-value-proposition__comparison-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            min-width: 200px;
+        }
+        
+        .c-value-proposition__comparison-label {
+            font-size: 20px;
+            color: #000000;
+            font-weight: bold;
+            flex: 1;
+            font-family: 'Meiryo', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
+            margin-top: 5px;
+        }
+        
+        .c-value-proposition__comparison-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000000;
+            min-width: 140px;
+            text-align: right;
+            font-family: 'Meiryo', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
+            margin-top: 5px;
+            display: block;
+            width: 140px;
+            flex-shrink: 0;
+        }
+        
+        .c-value-proposition__comparison-price--highlight {
+            color: #1e40af;
+        }
+        
+        .c-value-proposition__logo-small {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .c-value-proposition__bizscan-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+        }
+        
+        .c-value-proposition__logo-image {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .c-value-proposition__price-bar-container {
+            position: relative;
+            width: 100%;
+            margin-top: -75px;
+        }
+        
+        .c-value-proposition__price-bar {
+            height: 32px;
+            border-radius: 16px;
+            margin-bottom: 0;
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .c-value-proposition__price-bar-container .c-value-proposition__price-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .c-value-proposition__price-bar--high {
+            background: linear-gradient(90deg, #94a3b8 0%, #64748b 100%);
+            width: 100%;
+            position: relative;
+            overflow: visible;
+            margin-top: -40px;
+        }
+        
+        .c-value-proposition__price-bar--background {
+            background: #f3f4f6;
+            width: 100%;
+            z-index: 1;
+        }
+        
+        .c-value-proposition__price-bar--low {
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            width: 33%;
+            z-index: 2;
+        }
+        
+        .c-value-proposition__savings-badge {
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #ffffff;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+            border: 2px solid #ffffff;
+            z-index: 9999;
+            font-family: 'Meiryo', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
+        }
+        
+        .c-value-proposition__savings-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .c-value-proposition__savings-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .c-value-proposition__philosophy-header {
+            margin-bottom: 30px;
+        }
+        
+        .c-value-proposition__philosophy-header-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .c-value-proposition__philosophy-icon {
+            width: auto;
+            height: auto;
+        }
+        
+        .c-value-proposition__philosophy-icon img {
+            width: 28px;
+            height: 28px;
+        }
+        
+
+        
+
+        
+        .c-value-proposition__philosophy-label {
+            color: #000000 !important;
+            font-size: 24px !important;
+            font-weight: bold !important;
+            text-align: left !important;
+            font-family: '游教科書体', 'YuKyokasho', 'Comic Sans MS', 'Brush Script MT', 'Lucida Handwriting', 'Arial', 'Helvetica', 'Meiryo', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif !important;
+        }
+        
+        .c-value-proposition__philosophy-icon svg {
+            width: 28px;
+            height: 28px;
+            color: #ffffff;
+        }
+        
+        .c-value-proposition__philosophy-title {
+            font-size: 28px;
+            font-weight: 400;
+            color: #1e293b;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            line-height: 1.3;
+            text-align: left;
+            font-family: 'Meiryo', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
+        }
+        
+        .c-value-proposition__philosophy-content {
+            flex: 1;
+            margin-top: -10px;
+        }
+        
+        .c-value-proposition__philosophy-text {
+            font-size: 16px;
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .c-value-proposition__philosophy-text:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Responsive Design for Value Proposition */
+        @media (max-width: 768px) {
+            .c-value-proposition__cards-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 0 20px;
+            }
+            
+            .c-value-proposition__title {
+                font-size: 28px;
+            }
+            
+            .c-value-proposition__subtitle {
+                font-size: 16px;
+            }
+            
+            .c-value-proposition__price-card,
+            .c-value-proposition__philosophy-card {
+                padding: 30px 25px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="c-header" data-component="header" data-node-id="6:917">
+        <div class="c-header__content">
+            <div class="c-header__logo" data-element="logo" data-node-id="6:918">
+                <img src="image/logo/bizscan360-logo.png" alt="BizScan360">
+            </div>
+            <nav class="c-header__nav" data-element="nav" data-node-id="6:927">
+                <a href="#service" class="c-header__nav-item" data-node-id="6:919">サービス</a>
+                <a href="#pricing" class="c-header__nav-item" data-node-id="6:924">料金</a>
+                <a href="#faq" class="c-header__nav-item" data-node-id="6:922">よくある質問</a>
+                <a href="#contact" class="c-header__nav-item" data-node-id="6:920">お問い合わせ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="c-hero" data-component="hero" data-node-id="21:17">
+        <!-- Background Image -->
+        <div class="c-hero__bg-image" data-element="bg-image" data-node-id="6:541"></div>
+        
+        <!-- Overlay -->
+        <div class="c-hero__overlay" data-element="overlay" data-node-id="6:934"></div>
+        
+        <!-- Content -->
+        <div class="c-hero__content">
+            <div class="c-hero__text-container" data-element="text-container">
+                <!-- Main Title -->
+                <h1 class="c-hero__main-title" data-element="main-title" data-node-id="6:941">
+                    As-Is整理~課題抽出
+                </h1>
+                
+                <!-- Sub Title -->
+                <h2 class="c-hero__sub-title" data-element="sub-title" data-node-id="6:942">
+                    から<span class="c-hero__sub-title-highlight">最適な打ち手</span>を
+                </h2>
+                
+                <!-- Proposal Title -->
+                <h3 class="c-hero__proposal-title" data-element="proposal-title">
+                    ご提案
+                </h3>
+                
+                <!-- Cost Label -->
+                <div class="c-hero__cost-label" data-element="cost-label" data-node-id="12:1267">
+                    標準価格
+                </div>
+                
+                <!-- Price -->
+                <div class="c-hero__price" data-element="price" data-node-id="6:943">
+                    ¥980,000<span class="c-hero__price-tax">(税抜)</span>
+                </div>
+                
+                <!-- Description -->
+                <div class="c-hero__description" data-element="description" data-node-id="6:944">
+                    業務一覧表、フローチャート、工数集計表から<br>
+                    課題を特定し、ROI踏まえたうえでの取組むべき施策をご提案
+                </div>
+                
+                <!-- CTA Button -->
+                <a href="#contact" class="c-hero__cta-button" data-element="cta-button" data-node-id="12:1274">
+                    <div class="c-hero__cta-icon" data-element="cta-icon" data-node-id="12:1273"></div>
+                    <div class="c-hero__cta-text" data-element="cta-text" data-node-id="12:1270">
+                        今すぐ無料相談
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Issue Section -->
+    <section id="service" class="c-issue" data-component="issue" data-node-id="6:953">
+        <div class="c-issue__content">
+            <!-- Title -->
+            <h2 class="c-issue__title" data-element="title" data-node-id="6:959">
+                <span class="c-issue__title-highlight">このような課題</span>でお困りではありませんか？
+            </h2>
+            
+            <!-- Underline -->
+            <div class="c-issue__underline" data-element="underline" data-node-id="12:1262"></div>
+            
+            <!-- Background Icons -->
+            <div class="c-issue__icon-1" data-element="icon-1" data-node-id="12:1224"></div>
+            <div class="c-issue__icon-2" data-element="icon-2" data-node-id="12:1254"></div>
+            <div class="c-issue__icon-3" data-element="icon-3" data-node-id="12:1255"></div>
+            <div class="c-issue__icon-4" data-element="icon-4" data-node-id="12:1259"></div>
+            <div class="c-issue__icon-5" data-element="icon-5" data-node-id="12:1260"></div>
+            <div class="c-issue__icon-6" data-element="icon-6" data-node-id="12:1256"></div>
+            
+            <!-- Top Row Cards -->
+            <div class="c-issue__cards-top" data-element="cards-top" data-node-id="12:1258">
+                <!-- Card 1: Excel管理の限界 -->
+                <div class="c-issue__card" data-card="1" data-node-id="12:1226">
+                    <div class="c-issue__card-case" data-element="case" data-node-id="11:1219">
+                        case <span class="c-issue__card-case-number">01</span>
+                    </div>
+                    <h3 class="c-issue__card-title" data-element="title" data-node-id="6:955">Excel管理の限界</h3>
+                    <p class="c-issue__card-description" data-element="description" data-node-id="6:960">
+                        データが散在し、集計に時間がかかる。ファイルの管理も煩雑で、最新版がわからない。
+                    </p>
+                </div>
+                
+                <!-- Card 2: 業務の属人化 -->
+                <div class="c-issue__card" data-card="2" data-node-id="12:1227">
+                    <div class="c-issue__card-case" data-element="case">
+                        case <span class="c-issue__card-case-number">02</span>
+                    </div>
+                    <h3 class="c-issue__card-title" data-element="title">業務の属人化</h3>
+                    <p class="c-issue__card-description" data-element="description">
+                        特定の人しかできない業務が多数存在。その人が休むと業務が止まってしまう。
+                    </p>
+                </div>
+                
+                <!-- Card 3: システムの乱立 -->
+                <div class="c-issue__card" data-card="3" data-node-id="12:1232">
+                    <div class="c-issue__card-case" data-element="case">
+                        case <span class="c-issue__card-case-number">03</span>
+                    </div>
+                    <h3 class="c-issue__card-title" data-element="title">システムの乱立</h3>
+                    <p class="c-issue__card-description" data-element="description">
+                        部署ごとに異なるツールを使用。データ連携ができず、二重入力が発生している。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Bottom Row Cards -->
+            <div class="c-issue__cards-bottom" data-element="cards-bottom" data-node-id="12:1257">
+                <!-- Card 4: 時間の無駄 -->
+                <div class="c-issue__card" data-card="4" data-node-id="12:1236">
+                    <div class="c-issue__card-case" data-element="case">
+                        case <span class="c-issue__card-case-number">04</span>
+                    </div>
+                    <h3 class="c-issue__card-title" data-element="title">時間の無駄</h3>
+                    <p class="c-issue__card-description" data-element="description">
+                        手作業や紙ベースの作業による繰り返し業務が多く、本来の業務に集中できない時間が増加。
+                    </p>
+                </div>
+                
+                <!-- Card 5: 業務の不透明性 -->
+                <div class="c-issue__card" data-card="5" data-node-id="12:1240">
+                    <div class="c-issue__card-case" data-element="case">
+                        case <span class="c-issue__card-case-number">05</span>
+                    </div>
+                    <h3 class="c-issue__card-title" data-element="title">業務の不透明性</h3>
+                    <p class="c-issue__card-description" data-element="description">
+                        どこにボトルネックがあるのかわからず、改善の優先順位が決められない。
+                    </p>
+                </div>
+                
+                <!-- Card 6: マンパワーでの解決 -->
+                <div class="c-issue__card" data-card="6" data-node-id="12:1244">
+                    <div class="c-issue__card-case" data-element="case">
+                        case <span class="c-issue__card-case-number">06</span>
+                    </div>
+                    <h3 class="c-issue__card-title" data-element="title">マンパワーでの解決</h3>
+                    <p class="c-issue__card-description" data-element="description">
+                        仕組みやツール等による課題解決ではなく、人的コストの投下で解決している。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3step Section -->
+    <section class="c-threestep" data-component="3step" data-node-id="10:996">
+        <div class="c-threestep__content">
+            <!-- Title -->
+            <h2 class="c-threestep__title" data-element="title" data-node-id="10:1001">
+                <span class="c-threestep__title-highlight">3ステップ</span>で業務改善を実現
+            </h2>
+            
+            <!-- Underline -->
+            <div class="c-threestep__underline" data-element="underline" data-node-id="12:1263"></div>
+            
+            <!-- Steps Container -->
+            <div class="c-threestep__steps-container" data-element="steps-container" data-node-id="11:1028">
+                <!-- Step 1 -->
+                <div class="c-threestep__step" data-step="1" data-node-id="11:1027">
+                    <div class="c-threestep__step-card">
+                        <!-- Step Number Circle -->
+                        <div class="c-threestep__step-circle" data-element="step-circle" data-node-id="11:1003">
+                            <div class="c-threestep__step-label">STEP</div>
+                            <div class="c-threestep__step-number">1</div>
+                        </div>
+                        
+                        <!-- Step Title -->
+                        <h3 class="c-threestep__step-title" data-element="step-title" data-node-id="11:1040">
+                            AsIs整理（業務診断）
+                        </h3>
+                        
+                        <!-- Step Description -->
+                        <p class="c-threestep__step-description" data-element="step-description" data-node-id="11:1041">
+                            現状の業務フローを見える化し、課題発生ポイントを特定します。
+                        </p>
+                        
+                        <!-- Step Points -->
+                        <ul class="c-threestep__step-points" data-element="step-points" data-node-id="11:1042">
+                            <li>業務フロー図作成</li>
+                            <li>処理時間測定</li>
+                            <li>課題ポイント特定</li>
+                        </ul>
+                        
+                        <!-- Step Image -->
+                        <div class="c-threestep__step-image c-threestep__step-image--clickable" data-element="step-image" data-node-id="11:1030" onclick="openImageModal('image/3step/step1-flowchart.png', '業務フロー図のサンプル')">
+                            <div class="c-threestep__image-header">業務フロー・サンプル</div>
+                            <img src="image/3step/step1-flowchart.png" alt="業務フロー図のサンプル">
+                            <div class="c-threestep__image-overlay">
+                                <div class="c-threestep__zoom-icon">🔍</div>
+                                <span class="c-threestep__click-text">クリックで拡大</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arrow 1 -->
+                <div class="c-threestep__arrow" data-element="arrow-1" data-node-id="11:1050">
+                    <div class="c-threestep__arrow-symbol">></div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="c-threestep__step" data-step="2" data-node-id="11:1025">
+                    <div class="c-threestep__step-card">
+                        <!-- Step Number Circle -->
+                        <div class="c-threestep__step-circle" data-element="step-circle" data-node-id="11:1015">
+                            <div class="c-threestep__step-label">STEP</div>
+                            <div class="c-threestep__step-number">2</div>
+                        </div>
+                        
+                        <!-- Step Title -->
+                        <h3 class="c-threestep__step-title" data-element="step-title" data-node-id="11:1043">
+                            課題分析
+                        </h3>
+                        
+                        <!-- Step Description -->
+                        <p class="c-threestep__step-description" data-element="step-description" data-node-id="11:1045">
+                            課題一覧を作成し、削減工数や売上向上など様々な観点でスコア化します。
+                        </p>
+                        
+                        <!-- Step Points -->
+                        <ul class="c-threestep__step-points" data-element="step-points" data-node-id="11:1044">
+                            <li>課題一覧作成</li>
+                            <li>改善効果をスコア化</li>
+                            <li>対応優先度を検討</li>
+                        </ul>
+                        
+                        <!-- Step Image -->
+                        <div class="c-threestep__step-image c-threestep__step-image--clickable" data-element="step-image" data-node-id="11:1033" onclick="openImageModal('image/3step/step2-issues-table.png', '課題分析表のサンプル')">
+                            <div class="c-threestep__image-header">課題一覧・サンプル</div>
+                            <img src="image/3step/step2-issues-table.png" alt="課題分析表のサンプル">
+                            <div class="c-threestep__image-overlay">
+                                <div class="c-threestep__zoom-icon">🔍</div>
+                                <span class="c-threestep__click-text">クリックで拡大</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arrow 2 -->
+                <div class="c-threestep__arrow" data-element="arrow-2" data-node-id="11:1052">
+                    <div class="c-threestep__arrow-symbol">></div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="c-threestep__step" data-step="3" data-node-id="11:1014">
+                    <div class="c-threestep__step-card">
+                        <!-- Step Number Circle -->
+                        <div class="c-threestep__step-circle" data-element="step-circle" data-node-id="11:1021">
+                            <div class="c-threestep__step-label">STEP</div>
+                            <div class="c-threestep__step-number">3</div>
+                        </div>
+                        
+                        <!-- Step Title -->
+                        <h3 class="c-threestep__step-title" data-element="step-title" data-node-id="11:1046">
+                            打ち手の提案
+                        </h3>
+                        
+                        <!-- Step Description -->
+                        <p class="c-threestep__step-description" data-element="step-description" data-node-id="11:1048">
+                            具体的な改善案と改善効果を提示し、投資対効果を明確にします。
+                        </p>
+                        
+                        <!-- Step Points -->
+                        <ul class="c-threestep__step-points" data-element="step-points" data-node-id="11:1047">
+                            <li>改善案策定</li>
+                            <li>改善工数を見える化</li>
+                            <li>投資対効果を試算</li>
+                        </ul>
+                        
+                        <!-- Step Image -->
+                        <div class="c-threestep__step-image c-threestep__step-image--clickable" data-element="step-image" data-node-id="11:1036" onclick="openImageModal('image/3step/step3-effects-table.png', '効果試算表のサンプル')">
+                            <div class="c-threestep__image-header">改善提案・サンプル</div>
+                            <img src="image/3step/step3-effects-table.png" alt="効果試算表のサンプル">
+                            <div class="c-threestep__image-overlay">
+                                <div class="c-threestep__zoom-icon">🔍</div>
+                                <span class="c-threestep__click-text">クリックで拡大</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition Section -->
+    <section class="c-value-proposition" data-component="value-proposition">
+        <div class="c-value-proposition__content">
+            <!-- Badge -->
+            <div class="c-value-proposition__badge">
+                <div class="c-value-proposition__badge-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <span class="c-value-proposition__badge-text">圧倒的なコストパフォーマンス</span>
+            </div>
+            
+            <!-- Main Title -->
+            <h2 class="c-value-proposition__title">
+                高いサービス品質を<span class="c-value-proposition__highlight">相場の1/3の価格</span>でご提供
+            </h2>
+            
+            <!-- Subtitle -->
+            <p class="c-value-proposition__subtitle">
+                リーズナブルな価格で小さな投資でDX推進をスタートできます。
+            </p>
+            
+            <!-- Cards Container -->
+            <div class="c-value-proposition__cards-container">
+                <!-- Price Comparison Card -->
+                <div class="c-value-proposition__price-card">
+                    <div class="c-value-proposition__card-header">
+                        <h3 class="c-value-proposition__card-title">価格比較</h3>
+                        <p class="c-value-proposition__card-subtitle">市場価格との比較</p>
+                    </div>
+                    
+                    <div class="c-value-proposition__comparison">
+                        <div class="c-value-proposition__comparison-item">
+                            <div class="c-value-proposition__comparison-info">
+                                <span class="c-value-proposition__comparison-label">一般的なコンサル会社</span>
+                                <span class="c-value-proposition__comparison-price">¥3,000,000</span>
+                            </div>
+                            <div class="c-value-proposition__price-bar c-value-proposition__price-bar--high">
+                                <div class="c-value-proposition__savings-badge">
+                                    <span class="c-value-proposition__savings-text">↓67%Down</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="c-value-proposition__comparison-item">
+                            <div class="c-value-proposition__comparison-info">
+                                <img src="image/logo/bizscan360-logo.png" alt="BizScan360ロゴ" class="c-value-proposition__logo-small">
+                                <span class="c-value-proposition__comparison-price c-value-proposition__comparison-price--highlight">¥980,000</span>
+                            </div>
+                            <div class="c-value-proposition__price-bar-container">
+                                <div class="c-value-proposition__price-bar c-value-proposition__price-bar--background"></div>
+                                <div class="c-value-proposition__price-bar c-value-proposition__price-bar--low"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Company Philosophy Card -->
+                <div class="c-value-proposition__philosophy-card">
+                    <div class="c-value-proposition__philosophy-header">
+                        <div class="c-value-proposition__philosophy-header-top">
+                            <span class="c-value-proposition__philosophy-label" style="font-family: 'Klee One', 'Comic Sans MS', 'Brush Script MT', 'Lucida Handwriting', '游教科書体', 'YuKyokasho', Arial, Helvetica, sans-serif !important; font-weight: 900 !important; font-size: 24px !important;">「私たちの想い」</span>
+                        </div>
+                        <h3 class="c-value-proposition__philosophy-title">
+                            スモールスタートによる<br>DX推進を支援したい
+                        </h3>
+                    </div>
+                    <div class="c-value-proposition__philosophy-content">
+                        <p class="c-value-proposition__philosophy-text">
+                            <strong style="color: #7d7676;">「DXは大企業のもの」「マンパワーでやるしかない」と諦めてしまう現状を変えたい。</strong>
+                        </p>
+                        <p class="c-value-proposition__philosophy-text">
+                            <strong style="color: #7d7676;">私たちは、どんな企業でもまずは一歩を踏み出せる価格でサービスを提供することにこだわっています。</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="c-demo" data-component="demo" data-node-id="11:1084">
+        <div class="c-demo__content">
+            <!-- Title -->
+            <h2 class="c-demo__title" data-element="title" data-node-id="11:1085">
+                提案時に<span class="c-demo__title-highlight">デモ画面を共有</span>するから安心
+            </h2>
+            
+            <!-- Subtitle -->
+            <p class="c-demo__subtitle" data-element="subtitle" data-node-id="11:1089">
+                IT部門がない中小企業でも、導入後のイメージが一目で分かる
+            </p>
+            
+            <!-- Underline -->
+            <div class="c-demo__underline" data-element="underline" data-node-id="12:1265"></div>
+            
+            <!-- Demo Container -->
+            <div class="c-demo__container" data-element="container" data-node-id="11:1091">
+                <h3 class="c-demo__container-title" data-element="container-title" data-node-id="11:1092">
+                    実際のデモ画面をご覧ください
+                </h3>
+                <p class="c-demo__container-description" data-element="container-description" data-node-id="11:1094">
+                    業務改善後の画面イメージを提案時に共有することで、導入後の姿を事前に確認できます。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fee Section -->
+    <section id="pricing" class="c-fee" data-component="fee" data-node-id="11:1096">
+        <div class="c-fee__content">
+            <!-- Title -->
+            <div class="c-fee__title" data-element="title" data-node-id="11:1099">
+                <h2 class="c-fee__title-main">ご利用料金</h2>
+                <p class="c-fee__title-sub">標準価格</p>
+            </div>
+            
+            <!-- Price Display -->
+            <div class="c-fee__price-display">
+                <div class="c-fee__price-main">
+                    <span class="c-fee__price-amount">¥980,000</span>
+                    <span class="c-fee__price-tax">(税抜)</span>
+                </div>
+            </div>
+            
+            <!-- Deliverables Section -->
+            <div class="c-fee__deliverables">
+                <h3 class="c-fee__deliverables-title">成果物一覧</h3>
+                
+                <div class="c-fee__deliverables-cards">
+                    <!-- Card 1: As-Is整理 -->
+                    <div class="c-fee__deliverable-card">
+                        <div class="c-fee__deliverable-number">1</div>
+                        <h4 class="c-fee__deliverable-title">As-Is整理</h4>
+                        <p class="c-fee__deliverable-description">業務一覧表、フローチャート、工数集計表</p>
+                    </div>
+                    
+                    <!-- Card 2: 課題一覧表 -->
+                    <div class="c-fee__deliverable-card">
+                        <div class="c-fee__deliverable-number">2</div>
+                        <h4 class="c-fee__deliverable-title">課題一覧表</h4>
+                        <p class="c-fee__deliverable-description">課題事項、インパクト評価、打ち手案ドラフト</p>
+                    </div>
+                    
+                    <!-- Card 3: 施策のご提案 -->
+                    <div class="c-fee__deliverable-card">
+                        <div class="c-fee__deliverable-number">3</div>
+                        <h4 class="c-fee__deliverable-title">施策（打ち手）のご提案</h4>
+                        <p class="c-fee__deliverable-description">ROI踏まえたシミュレーション、取り組むべき施策のご提案</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Button -->
+            <div class="c-fee__cta-container">
+                <a href="#contact" class="c-fee__cta-button">
+                    <div class="c-fee__cta-icon"></div>
+                    <div class="c-fee__cta-text">無料相談はこちら</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // CTA Button Analytics Tracking (example)
+        document.querySelector('[data-element="cta-button"]').addEventListener('click', function(e) {
+            // Add analytics tracking here if needed
+            console.log('CTA button clicked - Hero section');
+        });
+
+        // FAQ Accordion Functionality
+        document.querySelectorAll('.c-faq__question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.closest('.c-faq__item');
+                const isOpen = faqItem.classList.contains('c-faq__item--open');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.c-faq__item').forEach(item => {
+                    item.classList.remove('c-faq__item--open');
+                });
+                
+                // Toggle current item
+                if (!isOpen) {
+                    faqItem.classList.add('c-faq__item--open');
+                }
+            });
+        });
+
+        // Contact Form Functionality
+        document.querySelector('.c-contact__form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data.company || !data.name || !data.email) {
+                alert('必須項目を入力してください。');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('有効なメールアドレスを入力してください。');
+                return;
+            }
+            
+            // Show loading state
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = '送信中...';
+            submitButton.disabled = true;
+            
+            // Prepare email content
+            const emailSubject = '【DX業務診断LP】お問い合わせフォームからのお問い合わせ';
+            const emailBody = `
+お問い合わせフォームから以下の内容でお問い合わせがありました。
+
+【会社名】
+${data.company}
+
+【お名前】
+${data.name}
+
+【メールアドレス】
+${data.email}
+
+【電話番号】
+${data.phone || '未入力'}
+
+【お問い合わせ内容】
+${data.message || '未入力'}
+
+---
+このメールは自動送信されています。
+送信日時: ${new Date().toLocaleString('ja-JP')}
+            `.trim();
+            
+            // Send email using mailto link
+            const mailtoLink = `mailto:info@festal-inc.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message on the page
+            setTimeout(() => {
+                const successMessage = document.getElementById('contactSuccessMessage');
+                const form = this;
+                
+                // Hide the form
+                form.style.display = 'none';
+                
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Reset button state
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 1000);
+        });
+    </script>
+
+    <!-- Company Section -->
+    <section class="c-company" data-component="company">
+        <div class="c-company__content">
+            <!-- Title -->
+            <div class="c-company__title" data-element="title">
+                <h2 class="c-company__title-main">会社概要</h2>
+            </div>
+            
+
+            
+            <!-- Cards Container -->
+            <div class="c-company__cards-container">
+                <!-- 左側：ブランディングと理念 -->
+                <div class="c-company__left-section">
+                    <div class="c-company__branding">
+                        <div class="c-company__logo-container">
+                            <img src="image/company/logo-with-text.png" alt="Festal Logo" class="c-company__brand-logo">
+                        </div>
+                        <h3 class="c-company__tagline">心に火を灯し、まだ見ぬ世界を共創する</h3>
+                        <p class="c-company__mission-text">
+                            我々は、世の中がワクワクするような世界観の実現に向けて、<br>
+                            個と組織に対して「心に火を灯す」×「一歩背中を押す」サービスを提供<br>
+                            し、「まだ見ぬ世界」をクライアントとともに共創いたします。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 右側：会社情報の詳細 -->
+                <div class="c-company__right-section">
+                    <div class="c-company__info-table">
+                        <div class="c-company__info-row">
+                            <span class="c-company__info-label">社名</span>
+                            <span class="c-company__info-value">株式会社Festal / Festal Inc.</span>
+                        </div>
+                        <div class="c-company__info-row">
+                            <span class="c-company__info-label">設立年月日</span>
+                            <span class="c-company__info-value">2022年1月28日</span>
+                        </div>
+                        <div class="c-company__info-row">
+                            <span class="c-company__info-label">代表者</span>
+                            <span class="c-company__info-value">阿部 将大</span>
+                        </div>
+                        <div class="c-company__info-row">
+                            <span class="c-company__info-label">資本金</span>
+                            <span class="c-company__info-value">5,000,000円</span>
+                        </div>
+                        <div class="c-company__info-row">
+                            <span class="c-company__info-label">所在地</span>
+                            <span class="c-company__info-value">〒330-0802 埼玉県さいたま市大宮区宮町3丁目 1-7 宮町HSビル 2F</span>
+                        </div>
+                        <div class="c-company__info-row">
+                            <span class="c-company__info-label">事業内容</span>
+                            <span class="c-company__info-value">戦略/ITコンサルティング, 地方創生コンサルティング, 営業支援, BPO</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="c-faq" data-component="faq">
+        <div class="c-faq__content">
+            <!-- Title -->
+            <h2 class="c-faq__title" data-element="title">
+                よくある質問
+            </h2>
+            
+            <!-- Subtitle -->
+            <p class="c-faq__subtitle" data-element="subtitle">
+                お客様からよくいただく質問をまとめました
+            </p>
+            
+            <!-- FAQ Container -->
+            <div class="c-faq__container">
+                <!-- FAQ Item 1 -->
+                <div class="c-faq__item c-faq__item--open" data-element="faq-item" data-faq="1">
+                    <button class="c-faq__question" data-element="question">
+                        <div class="c-faq__question-number">Q1</div>
+                        <h3 class="c-faq__question-text">期間はどのくらいかかりますか？</h3>
+                        <div class="c-faq__toggle-icon"></div>
+                    </button>
+                    <div class="c-faq__answer" data-element="answer">
+                        <div class="c-faq__answer-content">
+                            <p class="c-faq__answer-text">
+                                標準的な診断期間は1〜2ヶ月です。初回ヒアリングから最終報告まで、お客様の業務に支障が出ないよう、段階的に進めていきます。規模や対象範囲により期間は調整可能です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="c-faq__item" data-element="faq-item" data-faq="2">
+                    <button class="c-faq__question" data-element="question">
+                        <div class="c-faq__question-number">Q2</div>
+                        <h3 class="c-faq__question-text">実施後の実装支援はありますか？</h3>
+                        <div class="c-faq__toggle-icon"></div>
+                    </button>
+                    <div class="c-faq__answer" data-element="answer">
+                        <div class="c-faq__answer-content">
+                            <p class="c-faq__answer-text">
+                                はい、ご要望に応じて実装支援も行っています。診断結果を基にしたシステム開発、業務プロセスの改善実行、社内教育など、別途お見積りにて承ります。まずは診断で投資対効果を確認してから、実装を検討いただけます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="c-faq__item" data-element="faq-item" data-faq="3">
+                    <button class="c-faq__question" data-element="question">
+                        <div class="c-faq__question-number">Q3</div>
+                        <h3 class="c-faq__question-text">導入のために準備すべきものはありますか？</h3>
+                        <div class="c-faq__toggle-icon"></div>
+                    </button>
+                    <div class="c-faq__answer" data-element="answer">
+                        <div class="c-faq__answer-content">
+                            <p class="c-faq__answer-text">
+                                特別な準備は不要です。普段お使いの業務資料（Excel、マニュアル、帳票など）を見せていただければ十分です。機密情報は必要に応じてマスキングしていただいて構いません。重要なのは実際の業務の流れを理解することです。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="c-faq__item" data-element="faq-item" data-faq="4">
+                    <button class="c-faq__question" data-element="question">
+                        <div class="c-faq__question-number">Q4</div>
+                        <h3 class="c-faq__question-text">通常業務に支障は出ませんか？</h3>
+                        <div class="c-faq__toggle-icon"></div>
+                    </button>
+                    <div class="c-faq__answer" data-element="answer">
+                        <div class="c-faq__answer-content">
+                            <p class="c-faq__answer-text">
+                                業務への影響を最小限に抑えるよう配慮します。ヒアリングは1回あたり1〜2時間程度、業務の合間に実施します。現場観察も通常業務を妨げないよう行います。多くの企業様から「思ったより負担が少なかった」とのお声をいただいています。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="c-contact" data-component="contact">
+        <div class="c-contact__content">
+            <!-- Title -->
+            <h2 class="c-contact__title" data-element="title">
+                お問い合わせ・無料相談
+            </h2>
+            
+            <!-- Subtitle -->
+            <p class="c-contact__subtitle" data-element="subtitle">
+                まずはお気軽にご相談ください
+            </p>
+            
+            <!-- Contact Container -->
+            <div class="c-contact__container">
+                <!-- Contact Form -->
+                <form class="c-contact__form" data-element="contact-form">
+                    <div class="c-contact__form-row">
+                        <div class="c-contact__form-group">
+                            <label class="c-contact__label" for="company">
+                                会社名 <span class="c-contact__required">必須</span>
+                            </label>
+                            <input class="c-contact__input" type="text" id="company" name="company" required>
+                        </div>
+                        
+                        <div class="c-contact__form-group">
+                            <label class="c-contact__label" for="name">
+                                お名前 <span class="c-contact__required">必須</span>
+                            </label>
+                            <input class="c-contact__input" type="text" id="name" name="name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="c-contact__form-row">
+                        <div class="c-contact__form-group">
+                            <label class="c-contact__label" for="email">
+                                メールアドレス <span class="c-contact__required">必須</span>
+                            </label>
+                            <input class="c-contact__input" type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="c-contact__form-group">
+                            <label class="c-contact__label" for="phone">
+                                電話番号
+                            </label>
+                            <input class="c-contact__input" type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    
+                    <div class="c-contact__form-group c-contact__form-group--full">
+                        <label class="c-contact__label" for="inquiry-type">
+                            お問い合わせ内容
+                        </label>
+                        <select class="c-contact__select" id="inquiry-type" name="inquiry-type">
+                            <option value="">選択してください</option>
+                            <option value="consultation">無料相談を希望</option>
+                            <option value="materials">資料請求</option>
+                            <option value="estimate">お見積り依頼</option>
+                            <option value="other">その他</option>
+                        </select>
+                    </div>
+                    
+                    <div class="c-contact__form-group c-contact__form-group--full">
+                        <label class="c-contact__label" for="message">
+                            メッセージ
+                        </label>
+                        <textarea class="c-contact__textarea" id="message" name="message" rows="5" placeholder="ご質問やご相談内容をお聞かせください"></textarea>
+                    </div>
+                    
+                    <div class="c-contact__form-submit">
+                        <button class="c-contact__submit-btn" type="submit">
+                            送信する
+                        </button>
+                        <p class="c-contact__privacy-note">
+                            送信いただいた情報は、プライバシーポリシーに従って適切に管理いたします。
+                        </p>
+                    </div>
+                    
+                    <!-- Success Message -->
+                    <div class="c-contact__success-message" id="contactSuccessMessage" style="display: none;">
+                        <div class="c-contact__success-content">
+                            <div class="c-contact__success-icon">✓</div>
+                            <h3 class="c-contact__success-title">送信完了</h3>
+                            <p class="c-contact__success-text">
+                                お問い合わせありがとうございます。<br>
+                                送信が完了しました。<br>
+                                内容を確認の上、担当者よりご連絡いたします。
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="c-image-modal" onclick="closeImageModal()">
+        <div class="c-image-modal__content" onclick="event.stopPropagation()">
+            <button class="c-image-modal__close" onclick="closeImageModal()">&times;</button>
+            <img id="modalImage" class="c-image-modal__image" src="" alt="">
+            <div id="modalTitle" class="c-image-modal__title"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript for FAQ and Image Modal functionality -->
+    <script>
+        // Image Modal Functions
+        function openImageModal(imageSrc, title) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            modalImage.src = imageSrc;
+            modalImage.alt = title;
+            modalTitle.textContent = title;
+            modal.classList.add('is-open');
+            
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('is-open');
+            
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.c-faq__item');
+            
+            faqItems.forEach(function(item) {
+                const question = item.querySelector('.c-faq__question');
+                const answer = item.querySelector('.c-faq__answer');
+                const icon = item.querySelector('.c-faq__toggle-icon');
+                
+                question.addEventListener('click', function() {
+                    const isOpen = item.classList.contains('c-faq__item--open');
+                    
+                    // Close all other FAQ items
+                    faqItems.forEach(function(otherItem) {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('c-faq__item--open');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (isOpen) {
+                        item.classList.remove('c-faq__item--open');
+                    } else {
+                        item.classList.add('c-faq__item--open');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
